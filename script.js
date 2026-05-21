@@ -15,11 +15,33 @@ function renderDishes() {
 
 function renderBasket() {
     const basketRef = document.getElementById('basket');
-    basketContent = "";
+    let basketContent = "";
+    if (basket.length == 0) {
+        basketRef.innerHTML = "Warenkorb leer";
+        renderTotalPrice();
+        return;
+    }
+
     for (let i = 0; i < basket.length; i++) {
         basketContent += getBasketTemplate(i);
     }
     basketRef.innerHTML = basketContent;
+    renderTotalPrice();
+}
+
+function renderTotalPrice() {
+    const totalPriceRef = document.getElementById('totalPrice');
+
+    if (basket.length === 0) {
+        totalPriceRef.innerHTML = "";
+        return;
+    }
+
+    let price = 0;
+    for (let i = 0; i < basket.length; i++) {
+        price += basket[i].amount * dishes[basket[i].id].price;
+    }
+    totalPriceRef.innerHTML = getPriceTemplate(price);
 }
 
 function addToBasket(dish_id) {
