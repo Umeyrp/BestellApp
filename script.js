@@ -49,6 +49,12 @@ function decreaseFromBasket(basket_id) {
     renderBasket();
 }
 
+function clearBasket() {
+    basket = [];
+    saveBasketInLocalStorage();
+    renderBasket();
+}
+
 function deleteFromBasket(basket_id) {
     basket.splice(basket_id, 1);
     saveBasketInLocalStorage();
