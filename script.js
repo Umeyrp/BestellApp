@@ -16,7 +16,7 @@ function renderDishes() {
 function renderBasket() {
     const basketRef = document.getElementById('basket');
     let basketContent = "";
-    if (basket.length == 0) {
+    if (basket.length === 0) {
         basketRef.innerHTML = "Warenkorb leer";
         renderTotalPrice();
         return;
