@@ -1,5 +1,13 @@
-function getDishTemplate(dish_id) {
-    return `<div>${dishes[dish_id].name}<br>${dishes[dish_id].description}<br>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dishes[dish_id].price)}</div><br> <button onclick="addToBasket(${dish_id})">In Warenkorb</button>`;
+function getPizzaTemplate(pizza, dish_id) {
+    return `    <article>
+                    <img src="./assets/img/pizza_img_1.jpg" alt="">
+                    <h2>${pizza[dish_id].name}</h2>
+                    <p>${pizza[dish_id].description}</p>
+                    <div class="food-footer">
+                        <p>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(pizza[dish_id].price)}</p>
+                        <button onclick="addToBasket(${dish_id})">Add to basket</button>
+                    </div>
+                </article>`;
 }
 
 function getBasketTemplate(basket_id) {

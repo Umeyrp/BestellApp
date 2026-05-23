@@ -1,31 +1,37 @@
 function init() {
     getBasketFromLocalStorage();
-    renderDishes();
+    renderPizza();
     renderBasket();
 }
 
-function renderDishes() {
-    const dishesRef = document.getElementById('dishes');
-    let dishesContent = "";
-    for (let i = 0; i < dishes.length; i++) {
-        dishesContent += getDishTemplate(i);
+function renderPizza() {
+    const pizzaRef = document.getElementById('pizza-section');
+    let Content = "";
+    let pizza = dishes.filter(item => item.category === "pizza");
+    for (let i = 0; i < pizza.length; i++) {
+        Content += getPizzaTemplate(pizza, i);
     }
-    dishesRef.innerHTML = dishesContent;
+    pizzaRef.innerHTML = Content;
 }
 
 function renderBasket() {
     const basketRef = document.getElementById('basket');
+    const basketCounterRef = document.getElementById("shopping-cart-counter");
     let basketContent = "";
+    let basketItemsCount = 0;
     if (basket.length === 0) {
         basketRef.innerHTML = "Warenkorb leer";
+        basketCounterRef.innerHTML = basketItemsCount;
         renderTotalPrice();
         return;
     }
 
     for (let i = 0; i < basket.length; i++) {
         basketContent += getBasketTemplate(i);
+        basketItemsCount += basket[i].amount;
     }
     basketRef.innerHTML = basketContent;
+    basketCounterRef.innerHTML = basketItemsCount;
     renderTotalPrice();
 }
 
