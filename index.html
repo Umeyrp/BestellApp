@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" type="image/x-icon" href="./assets/img/burger.png">
+    <link rel="icon" type="image/x-icon" href="./assets/img/burger_img.png">
     <title>Bestello</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
-
 </head>
 
 <body onload="init()">
@@ -58,11 +57,12 @@
         <button>
             <img src="./assets/icons/orders_icon.svg" alt="">
         </button>
-        <button class="shopping-cart-wrapper">
+        <button class="shopping-cart-wrapper" onclick="openDialog()">
             <img src="./assets/icons/shopping_cart_icon.svg" alt="">
             <p class="shopping-cart-counter" id="shopping-cart-counter"></p>
         </button>
     </nav>
+    <dialog class="basket-dialog" id="basket-dialog" aria-modal="true"></dialog>
 </body>
 <script src="./scripts/db.js"></script>
 <script src="./scripts/template.js"></script>

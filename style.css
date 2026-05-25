@@ -241,6 +241,8 @@ nav {
     gap: 64px;
     padding: 24px 25px;
     background-color: #363534;
+    position: sticky;
+    bottom: 0;
 }
 
 nav button {
@@ -275,4 +277,23 @@ nav img {
     font-weight: 600;
     line-height: 1;
     color: #E76C1F;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 38px 20px;
+    width: 100%;
+}
+
+.basket-dialog {
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding: 0;
+    background-color: #363534;
+    border: none;
 }

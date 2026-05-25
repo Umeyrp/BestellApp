@@ -1,3 +1,5 @@
+const dialogRef = document.getElementById('basket-dialog');
+
 function init() {
     getBasketFromLocalStorage();
     renderPizza();
@@ -97,3 +99,23 @@ function getBasketFromLocalStorage() {
     const basketLocal = JSON.parse(localStorage.getItem("basket"));
     if (basketLocal) basket = basketLocal;
 }
+
+function openDialog() {
+    dialogRef.innerHTML = "";
+    dialogRef.innerHTML = getDialogTemplate();
+    dialogRef.showModal();
+}
+
+function closeDialog() {
+    dialogRef.close();
+}
+
+function enableOutsideClickClose(dialogRef) {
+    dialogRef.addEventListener("click", (event) => {
+        if (event.target === dialogRef) {
+            dialogRef.close();
+        }
+    });
+}
+
+enableOutsideClickClose(dialogRef);
