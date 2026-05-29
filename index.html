@@ -56,7 +56,6 @@
         </section>
         <section class="" id="basket" aria-label="Warenkorb">
         </section>
-        <p id="totalPrice"></p>
     </main>
     <footer>
         <p>Imprint</p>
@@ -78,7 +77,12 @@
             <p class="shopping-cart-counter" id="shopping-cart-counter"></p>
         </button>
     </nav>
-    <dialog class="basket-dialog" id="basket-dialog" aria-modal="true"></dialog>
+    <dialog class="basket-dialog" id="basket-dialog" aria-modal="true">
+        <article class="dialog-content">
+            <h2>Your Basket</h2>
+            <div id="basked-content"></div>
+        </article>
+    </dialog>
 </body>
 <script src="./scripts/db.js"></script>
 <script src="./scripts/template.js"></script>

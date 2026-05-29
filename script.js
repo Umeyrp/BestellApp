@@ -2,49 +2,45 @@ const dialogRef = document.getElementById('basket-dialog');
 
 function init() {
     getBasketFromLocalStorage();
-    renderPizza();
-    renderBurger();
-    renderSalad();
+    renderDishes();
     renderBasket();
 }
 
-function renderPizza() {
+function renderDishes() {
     const pizzaRef = document.getElementById('pizza-section');
-    let Content = "";
-    let dishesFiltered = dishes.filter(item => item.category === "pizza");
-    for (let i = 0; i < dishesFiltered.length; i++) {
-        Content += getDishTemplate(dishesFiltered[i]);
-    }
-    pizzaRef.innerHTML = Content;
-}
-
-function renderBurger() {
     const burgerRef = document.getElementById('burger-section');
-    let Content = "";
-    let dishesFiltered = dishes.filter(item => item.category === "burger");
-    for (let i = 0; i < dishesFiltered.length; i++) {
-        Content += getDishTemplate(dishesFiltered[i]);
-    }
-    burgerRef.innerHTML = Content;
-}
-
-function renderSalad() {
     const saladRef = document.getElementById('salad-section');
-    let Content = "";
-    let dishesFiltered = dishes.filter(item => item.category === "salad");
-    for (let i = 0; i < dishesFiltered.length; i++) {
-        Content += getDishTemplate(dishesFiltered[i]);
+
+    let pizzaContent = "";
+    let burgerContent = "";
+    let saladContent = "";
+
+    let pizza = dishes.filter(item => item.category === "pizza");
+    for (let i = 0; i < pizza.length; i++) {
+        pizzaContent += getDishTemplate(pizza[i]);
     }
-    saladRef.innerHTML = Content;
+
+    let burger = dishes.filter(item => item.category === "burger");
+    for (let i = 0; i < burger.length; i++) {
+        burgerContent += getDishTemplate(burger[i]);
+    }
+    let salad = dishes.filter(item => item.category === "salad");
+    for (let i = 0; i < salad.length; i++) {
+        saladContent += getDishTemplate(salad[i]);
+    }
+    pizzaRef.innerHTML = pizzaContent;
+    burgerRef.innerHTML = burgerContent;
+    saladRef.innerHTML = saladContent;
+
 }
 
 function renderBasket() {
-    const basketRef = document.getElementById('basket');
+    const basketRef = document.getElementById('basked-content');
     const basketCounterRef = document.getElementById("shopping-cart-counter");
     let basketContent = "";
     let basketItemsCount = 0;
     if (basket.length === 0) {
-        basketRef.innerHTML = "Warenkorb leer";
+        basketRef.innerHTML = getEmptyBasketTemplate();
         basketCounterRef.innerHTML = basketItemsCount;
         renderTotalPrice();
         return;
@@ -54,6 +50,7 @@ function renderBasket() {
         basketContent += getBasketTemplate(i);
         basketItemsCount += basket[i].amount;
     }
+    basketContent += getBasketFooterTemplate();
     basketRef.innerHTML = basketContent;
     basketCounterRef.innerHTML = basketItemsCount;
     renderTotalPrice();
@@ -62,16 +59,13 @@ function renderBasket() {
 function renderTotalPrice() {
     const totalPriceRef = document.getElementById('totalPrice');
 
-    if (basket.length === 0) {
-        totalPriceRef.innerHTML = "";
-        return;
+    if (basket.length !== 0) {
+        let price = 0;
+        for (let i = 0; i < basket.length; i++) {
+            price += basket[i].amount * dishes[basket[i].id].price;
+        }
+        totalPriceRef.innerHTML = getPriceTemplate(price);
     }
-
-    let price = 0;
-    for (let i = 0; i < basket.length; i++) {
-        price += basket[i].amount * dishes[basket[i].id].price;
-    }
-    totalPriceRef.innerHTML = getPriceTemplate(price);
 }
 
 function addToBasket(dish_id) {
@@ -122,9 +116,8 @@ function getBasketFromLocalStorage() {
     if (basketLocal) basket = basketLocal;
 }
 
+
 function openDialog() {
-    dialogRef.innerHTML = "";
-    dialogRef.innerHTML = getDialogTemplate();
     dialogRef.showModal();
 }
 
