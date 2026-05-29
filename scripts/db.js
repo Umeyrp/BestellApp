@@ -25,18 +25,50 @@ let dishes = [
     },
     {
         "id": 3,
-        "name": "Nudel Bolognese",
-        "description": "mit Hackfleisch und Sauce",
-        "price": 9.99,
-        "category": "noodles",
+        "name": "Salad with Sea food",
+        "description": "mit Tintenfisch, Schrimps und roten Zwiebeln",
+        "price": 5.99,
+        "category": "salad",
         "img": "../assets/img/..."
     },
     {
         "id": 4,
-        "name": "Nudel Napoli",
-        "description": "mit Tomatensauce und Mais",
+        "name": "Salad with Chicken",
+        "description": "mit Hähnchen und Oliven",
         "price": 8.99,
-        "category": "noodles",
+        "category": "salad",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 5,
+        "name": "Mini Salad",
+        "description": "mit Gurken, Karotten und Radieschen",
+        "price": 9.99,
+        "category": "salad",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 6,
+        "name": "Veggie black Burger",
+        "description": "mit Mozarella, Gorgonzola und Tomaten",
+        "price": 8.99,
+        "category": "burger",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 7,
+        "name": "All meat Burger",
+        "description": "mit Beef, Bacon und Sauergurken",
+        "price": 9.99,
+        "category": "burger",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 8,
+        "name": "Beef red Burger",
+        "description": "mit Beef, Käse und Tomaten",
+        "price": 8.99,
+        "category": "burger",
         "img": "../assets/img/..."
     }
 ];
