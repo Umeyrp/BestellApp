@@ -8,7 +8,7 @@ main {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 32px;
+    gap: 64px;
 }
 
 .site-header {
@@ -114,19 +114,20 @@ main {
     line-height: 120%;
 }
 
-.burger-section {
+.food-section {
     display: flex;
     flex-direction: column;
     gap: 32px;
     margin-top: 70px;
 }
 
-.burger-header {
+.food-header {
     position: relative;
+    margin-bottom: 32px;
     background-color: #E76C1F;
 }
 
-.burger-header h2 {
+.food-header h2 {
     padding: 11px 0;
     font-family: "Palanquin";
     font-size: 32px;
@@ -135,7 +136,7 @@ main {
     color: white;
 }
 
-.burger-header img {
+.food-header img {
     position: absolute;
     top: -35px;
     left: 50%;
@@ -235,14 +236,14 @@ footer p:last-child {
 }
 
 nav {
+    position: sticky;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 64px;
     padding: 24px 25px;
     background-color: #363534;
-    position: sticky;
-    bottom: 0;
 }
 
 nav button {
@@ -283,17 +284,17 @@ nav img {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 38px 20px;
     width: 100%;
+    padding: 38px 20px;
 }
 
 .basket-dialog {
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
     width: auto;
     height: auto;
     margin: auto;
     padding: 0;
     background-color: #363534;
     border: none;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }

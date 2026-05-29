@@ -25,30 +25,6 @@ let dishes = [
     },
     {
         "id": 3,
-        "name": "Salad with Sea food",
-        "description": "mit Tintenfisch, Schrimps und roten Zwiebeln",
-        "price": 5.99,
-        "category": "salad",
-        "img": "../assets/img/..."
-    },
-    {
-        "id": 4,
-        "name": "Salad with Chicken",
-        "description": "mit Hähnchen und Oliven",
-        "price": 8.99,
-        "category": "salad",
-        "img": "../assets/img/..."
-    },
-    {
-        "id": 5,
-        "name": "Mini Salad",
-        "description": "mit Gurken, Karotten und Radieschen",
-        "price": 9.99,
-        "category": "salad",
-        "img": "../assets/img/..."
-    },
-    {
-        "id": 6,
         "name": "Veggie black Burger",
         "description": "mit Mozarella, Gorgonzola und Tomaten",
         "price": 8.99,
@@ -56,7 +32,7 @@ let dishes = [
         "img": "../assets/img/..."
     },
     {
-        "id": 7,
+        "id": 4,
         "name": "All meat Burger",
         "description": "mit Beef, Bacon und Sauergurken",
         "price": 9.99,
@@ -64,11 +40,35 @@ let dishes = [
         "img": "../assets/img/..."
     },
     {
-        "id": 8,
+        "id": 5,
         "name": "Beef red Burger",
         "description": "mit Beef, Käse und Tomaten",
         "price": 8.99,
         "category": "burger",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 6,
+        "name": "Salad with Sea food",
+        "description": "mit Tintenfisch, Schrimps und roten Zwiebeln",
+        "price": 5.99,
+        "category": "salad",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 7,
+        "name": "Salad with Chicken",
+        "description": "mit Hähnchen und Oliven",
+        "price": 8.99,
+        "category": "salad",
+        "img": "../assets/img/..."
+    },
+    {
+        "id": 8,
+        "name": "Mini Salad",
+        "description": "mit Gurken, Karotten und Radieschen",
+        "price": 9.99,
+        "category": "salad",
         "img": "../assets/img/..."
     }
 ];

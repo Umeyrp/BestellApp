@@ -3,17 +3,39 @@ const dialogRef = document.getElementById('basket-dialog');
 function init() {
     getBasketFromLocalStorage();
     renderPizza();
+    renderBurger();
+    renderSalad();
     renderBasket();
 }
 
 function renderPizza() {
     const pizzaRef = document.getElementById('pizza-section');
     let Content = "";
-    let pizza = dishes.filter(item => item.category === "pizza");
-    for (let i = 0; i < pizza.length; i++) {
-        Content += getPizzaTemplate(pizza, i);
+    let dishesFiltered = dishes.filter(item => item.category === "pizza");
+    for (let i = 0; i < dishesFiltered.length; i++) {
+        Content += getDishTemplate(dishesFiltered[i]);
     }
     pizzaRef.innerHTML = Content;
+}
+
+function renderBurger() {
+    const burgerRef = document.getElementById('burger-section');
+    let Content = "";
+    let dishesFiltered = dishes.filter(item => item.category === "burger");
+    for (let i = 0; i < dishesFiltered.length; i++) {
+        Content += getDishTemplate(dishesFiltered[i]);
+    }
+    burgerRef.innerHTML = Content;
+}
+
+function renderSalad() {
+    const saladRef = document.getElementById('salad-section');
+    let Content = "";
+    let dishesFiltered = dishes.filter(item => item.category === "salad");
+    for (let i = 0; i < dishesFiltered.length; i++) {
+        Content += getDishTemplate(dishesFiltered[i]);
+    }
+    saladRef.innerHTML = Content;
 }
 
 function renderBasket() {

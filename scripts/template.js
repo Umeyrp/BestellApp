@@ -1,11 +1,11 @@
-function getPizzaTemplate(pizza, dish_id) {
+function getDishTemplate(dish) {
     return `    <article>
                     <img src="./assets/img/pizza_img_1.jpg" alt="">
-                    <h2>${pizza[dish_id].name}</h2>
-                    <p>${pizza[dish_id].description}</p>
+                    <h2>${dish.name}</h2>
+                    <p>${dish.description}</p>
                     <div class="food-footer">
-                        <p>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(pizza[dish_id].price)}</p>
-                        <button onclick="addToBasket(${dish_id})">Add to basket</button>
+                        <p>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dish.price)}</p>
+                        <button onclick="addToBasket(${dish.id})">Add to basket</button>
                     </div>
                 </article>`;
 }
