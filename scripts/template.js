@@ -11,13 +11,12 @@ function getDishTemplate(dish) {
 }
 
 function getBasketTemplate(basket_id) {
-    return `<div>
+    return `<div class="basket-item">
                 <h3>${basket[basket_id].amount} x ${dishes[basket[basket_id].id].name}</h3>
-                <div>
-                    <div>
-                        <button onclick="deleteFromBasket(${basket_id})">Löschen</button>                            
+                <div class="basket-item-footer">
+                    <div class="basket-item-buttons">
+                        ${basket[basket_id].amount > 1 ? `<button onclick="decreaseFromBasket(${basket_id})">-</button>` : `<button onclick="deleteFromBasket(${basket_id})">X</button>`}
                         <p>${basket[basket_id].amount}</p>
-                        ${basket[basket_id].amount > 1 ? `<button onclick="decreaseFromBasket(${basket_id})">-</button>` : ""}
                         <button onclick="addToBasket(${basket[basket_id].id})">+</button>
                     </div>
                     <p>${dishes[basket[basket_id].id].price}</p>

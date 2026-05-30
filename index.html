@@ -8,6 +8,7 @@
     <title>Bestello</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/basket.css">
 </head>
 
 <body onload="init()">
@@ -52,10 +53,6 @@
             <div class="food-container" id="salad-section">
             </div>
         </section>
-        <section class="" id="dishes" aria-label="Gerichte">
-        </section>
-        <section class="" id="basket" aria-label="Warenkorb">
-        </section>
     </main>
     <footer>
         <p>Imprint</p>
@@ -80,7 +77,7 @@
     <dialog class="basket-dialog" id="basket-dialog" aria-modal="true">
         <article class="dialog-content">
             <h2>Your Basket</h2>
-            <div id="basked-content"></div>
+            <div id="basked-content" class="basked-item-wrapper"></div>
         </article>
     </dialog>
 </body>
