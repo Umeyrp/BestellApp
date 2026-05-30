@@ -214,7 +214,8 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    padding: 22px 98px;
+    margin-top: 32px;
+    padding: 22px 0px;
     background-color: #E76C1F;
 }
 
@@ -256,4 +257,10 @@ nav button {
 nav img {
     height: 30px;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 375px) {
+    nav{
+        gap: 53px;
+    }
 }

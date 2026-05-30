@@ -12,41 +12,42 @@ function getDishTemplate(dish) {
 
 function getBasketTemplate(basket_id) {
     return `<div class="basket-item">
-                <h3>${basket[basket_id].amount} x ${dishes[basket[basket_id].id].name}</h3>
+                <div>
+                    <h3>${basket[basket_id].amount} x ${dishes[basket[basket_id].id].name}</h3>
+                    ${basket[basket_id].amount > 1 ? `<button class="basket-item-button" onclick="deleteFromBasket(${basket_id})"><img src="./assets/icons/delete.svg" alt="trash bin icon"></button>` : ``}
+                </div>
                 <div class="basket-item-footer">
-                    <div class="basket-item-buttons">
-                        ${basket[basket_id].amount > 1 ? `<button onclick="decreaseFromBasket(${basket_id})">-</button>` : `<button onclick="deleteFromBasket(${basket_id})">X</button>`}
+                    <div class="basket-item-buttons-wrapper">
+                        ${basket[basket_id].amount > 1 ? `<button class="basket-item-button" onclick="decreaseFromBasket(${basket_id})"><p>-</p></button>` : `<button class="basket-item-button" onclick="deleteFromBasket(${basket_id})"><img src="./assets/icons/delete.svg" alt="trash bin icon"></button>`}
                         <p>${basket[basket_id].amount}</p>
-                        <button onclick="addToBasket(${basket[basket_id].id})">+</button>
+                        <button class="basket-item-button" onclick="addToBasket(${basket[basket_id].id})"><p>+</p></button>
                     </div>
-                    <p>${dishes[basket[basket_id].id].price}</p>
+                    <p class="basket-item-price">${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dishes[basket[basket_id].id].price)}</p>
                 </div>
             </div>`;
 }
 
-function getPriceTemplate(price) {
-    return `Buy now (${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price)})`;
-}
-
 function getBasketFooterTemplate() {
-    return `<div>
+    return `<div class="basket-price-wrapper">
                 <p>Subtotal</p>
-                <p>Delivery fee</p>
+                <p>${renderTotalPrice()}</p>
             </div>
-            <div>
-                <p>2€</p>
-                <p>3€</p>
+            <div class="basket-price-wrapper">
+                <p>Delivery fee</p>
+                <p>2 €</p>
             </div>
             <hr>
-            <div>
+            <div class="basket-price-wrapper">
                 <p>Total</p>
-                <p>24€</p>
+                <p>${renderTotalPrice(2)}</p>
             </div>
-            <button id="totalPrice">
+            <button id="totalPrice" class="basket-buy-button">
+            Buy now (${renderTotalPrice(2)})
             </button>`;
 }
 
 function getEmptyBasketTemplate() {
-    return `<p>Nothing here yet. Go ahead and choose something delicious!</p>
-    Warenkorb icon`;
+    return `<p class="empty-basket-text">Nothing here yet.<br>Go ahead and choose something<br>delicious!</p>
+            <img src="./assets/icons/shopping_cart.svg" class="emtpy-basket-img" alt="shopping cart icon">
+    `;
 }

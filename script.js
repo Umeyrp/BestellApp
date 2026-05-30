@@ -46,25 +46,31 @@ function renderBasket() {
         return;
     }
 
+    basketContent += `<div class="basket-item-wrapper">`;
     for (let i = 0; i < basket.length; i++) {
         basketContent += getBasketTemplate(i);
         basketItemsCount += basket[i].amount;
     }
+    basketContent += `</div>`;
     basketContent += getBasketFooterTemplate();
     basketRef.innerHTML = basketContent;
     basketCounterRef.innerHTML = basketItemsCount;
     renderTotalPrice();
 }
 
-function renderTotalPrice() {
-    const totalPriceRef = document.getElementById('totalPrice');
+function renderTotalPriceWithFee() {
+    renderTotalPrice(2);
+}
 
+function renderTotalPrice(DeliveryFee = 0) {
     if (basket.length !== 0) {
         let price = 0;
         for (let i = 0; i < basket.length; i++) {
             price += basket[i].amount * dishes[basket[i].id].price;
         }
-        totalPriceRef.innerHTML = getPriceTemplate(price);
+        price += DeliveryFee;
+        price = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price);
+        return price;
     }
 }
 

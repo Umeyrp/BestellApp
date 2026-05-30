@@ -37,7 +37,7 @@
             <div class="food-container" id="pizza-section">
             </div>
         </section>
-        <section class="salad-section">
+        <section class="burger-section">
             <header class="food-header">
                 <img src="./assets/icons/burger_icon.svg" alt="burger icon">
                 <h2>Burger</h2>
@@ -76,8 +76,11 @@
     </nav>
     <dialog class="basket-dialog" id="basket-dialog" aria-modal="true">
         <article class="dialog-content">
+            <button onclick="closeDialog()" class="close-dialog-button">
+                <img src="./assets/icons/close.svg" alt="close icon">
+            </button>
             <h2>Your Basket</h2>
-            <div id="basked-content" class="basked-item-wrapper"></div>
+            <div id="basked-content" class="basked-content"></div>
         </article>
     </dialog>
 </body>
