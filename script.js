@@ -149,7 +149,7 @@ function closeConfirmedDialog() {
     confirmedDialogRef.close();
 }
 
-function enableOutsideClickCloseBasktDialog(basketDialogRef) {
+function enableOutsideClickCloseBasketDialog(basketDialogRef) {
     basketDialogRef.addEventListener("click", (event) => {
         if (event.target === basketDialogRef) {
             basketDialogRef.close();
@@ -157,4 +157,13 @@ function enableOutsideClickCloseBasktDialog(basketDialogRef) {
     });
 }
 
-enableOutsideClickCloseBasktDialog(basketDialogRef);
+function enableOutsideClickCloseConfirmedDialog(confirmedDialogRef) {
+    confirmedDialogRef.addEventListener("click", (event) => {
+        if (event.target === confirmedDialogRef) {
+            confirmedDialogRef.close();
+        }
+    });
+}
+
+enableOutsideClickCloseBasketDialog(basketDialogRef);
+enableOutsideClickCloseConfirmedDialog(confirmedDialogRef);
