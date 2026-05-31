@@ -69,19 +69,29 @@
         <button>
             <img src="./assets/icons/orders_icon.svg" alt="">
         </button>
-        <button class="shopping-cart-wrapper" onclick="openDialog()">
+        <button class="shopping-cart-wrapper" onclick="openBasketDialog()">
             <img src="./assets/icons/shopping_cart_icon.svg" alt="">
             <p class="shopping-cart-counter" id="shopping-cart-counter"></p>
         </button>
     </nav>
     <dialog class="basket-dialog" id="basket-dialog" aria-modal="true">
         <article class="dialog-content">
-            <button onclick="closeDialog()" class="close-dialog-button">
+            <button onclick="closeBasketDialog()" class="close-dialog-button">
                 <img src="./assets/icons/close.svg" alt="close icon">
             </button>
             <h2>Your Basket</h2>
             <div id="basked-content" class="basked-content"></div>
         </article>
+    </dialog>
+    <dialog class="confirmed-dialog" id="confirmed-dialog" aria-modal="true">
+        <button onclick="closeConfirmedDialog()" class="close-dialog-button">
+            <img src="./assets/icons/close.svg" alt="close icon">
+        </button>
+        <div class="confirmed-wrapper">
+            <img src="./assets/icons/on_delivery_icon.svg" alt="">
+            <h2>Order confirmed!</h2>
+            <h3>Your food is on the way!</h3>
+        </div>
     </dialog>
 </body>
 <script src="./scripts/db.js"></script>

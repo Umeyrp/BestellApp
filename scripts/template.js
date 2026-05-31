@@ -41,7 +41,7 @@ function getBasketFooterTemplate() {
                 <p>Total</p>
                 <p>${renderTotalPrice(2)}</p>
             </div>
-            <button id="totalPrice" class="basket-buy-button">
+            <button onclick="orderFood()" id="totalPrice" class="basket-buy-button">
             Buy now (${renderTotalPrice(2)})
             </button>`;
 }

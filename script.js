@@ -1,4 +1,6 @@
-const dialogRef = document.getElementById('basket-dialog');
+const basketDialogRef = document.getElementById('basket-dialog');
+const confirmedDialogRef = document.getElementById('confirmed-dialog');
+
 
 function init() {
     getBasketFromLocalStorage();
@@ -101,6 +103,14 @@ function decreaseFromBasket(basket_id) {
     renderBasket();
 }
 
+function orderFood() {
+    clearBasket();
+    renderBasket();
+    openConfirmedDialog();
+    closeBasketDialog();
+    setTimeout(closeConfirmedDialog, 2000);
+}
+
 function clearBasket() {
     basket = [];
     saveBasketInLocalStorage();
@@ -123,20 +133,28 @@ function getBasketFromLocalStorage() {
 }
 
 
-function openDialog() {
-    dialogRef.showModal();
+function openBasketDialog() {
+    basketDialogRef.showModal();
 }
 
-function closeDialog() {
-    dialogRef.close();
+function openConfirmedDialog() {
+    confirmedDialogRef.showModal();
 }
 
-function enableOutsideClickClose(dialogRef) {
-    dialogRef.addEventListener("click", (event) => {
-        if (event.target === dialogRef) {
-            dialogRef.close();
+function closeBasketDialog() {
+    basketDialogRef.close();
+}
+
+function closeConfirmedDialog() {
+    confirmedDialogRef.close();
+}
+
+function enableOutsideClickCloseBasktDialog(basketDialogRef) {
+    basketDialogRef.addEventListener("click", (event) => {
+        if (event.target === basketDialogRef) {
+            basketDialogRef.close();
         }
     });
 }
 
-enableOutsideClickClose(dialogRef);
+enableOutsideClickCloseBasktDialog(basketDialogRef);
