@@ -76,7 +76,7 @@
     flex-direction: column;
     gap: 10px;
     height: 40%;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .basket-item {

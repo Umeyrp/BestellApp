@@ -1,6 +1,6 @@
 function getDishTemplate(dish) {
     return `    <article>
-                    <img src="./assets/img/pizza_img_1.jpg" alt="">
+                    <img src="${dish.img}" alt="">
                     <h2>${dish.name}</h2>
                     <p>${dish.description}</p>
                     <div class="food-footer">
