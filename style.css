@@ -260,7 +260,7 @@ nav img {
 }
 
 .confirmed-dialog {
-    width: 30%;
+    width: auto;
     height: 30%;
     margin: auto;
     padding: 0;
@@ -299,6 +299,11 @@ nav img {
     height: 57px;
 }
 
+@media screen and (min-width: 376px) {
+    .confirmed-dialog {
+        width: 30%;
+    }
+}
 
 @media screen and (max-width: 375px) {
     nav {
