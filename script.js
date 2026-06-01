@@ -8,56 +8,63 @@ function init() {
     renderBasket();
 }
 
+function getDishesTemplateByCategory(category) {
+    let content = "";
+
+    let categoryDishes = dishes.filter(item => item.category === category);
+    for (let i = 0; i < categoryDishes.length; i++) {
+        content += getDishTemplate(categoryDishes[i]);
+    }
+
+    return content;
+}
+
 function renderDishes() {
     const pizzaRef = document.getElementById('pizza-section');
     const burgerRef = document.getElementById('burger-section');
     const saladRef = document.getElementById('salad-section');
 
-    let pizzaContent = "";
-    let burgerContent = "";
-    let saladContent = "";
-
-    let pizza = dishes.filter(item => item.category === "pizza");
-    for (let i = 0; i < pizza.length; i++) {
-        pizzaContent += getDishTemplate(pizza[i]);
-    }
-
-    let burger = dishes.filter(item => item.category === "burger");
-    for (let i = 0; i < burger.length; i++) {
-        burgerContent += getDishTemplate(burger[i]);
-    }
-    let salad = dishes.filter(item => item.category === "salad");
-    for (let i = 0; i < salad.length; i++) {
-        saladContent += getDishTemplate(salad[i]);
-    }
-    pizzaRef.innerHTML = pizzaContent;
-    burgerRef.innerHTML = burgerContent;
-    saladRef.innerHTML = saladContent;
-
+    pizzaRef.innerHTML = getDishesTemplateByCategory("pizza");
+    burgerRef.innerHTML = getDishesTemplateByCategory("burger");
+    saladRef.innerHTML = getDishesTemplateByCategory("salad");
 }
 
 function renderBasket() {
     const basketRef = document.getElementById('basked-content');
-    const basketCounterRef = document.getElementById("shopping-cart-counter");
-    let basketContent = "";
-    let basketItemsCount = 0;
     if (basket.length === 0) {
         basketRef.innerHTML = getEmptyBasketTemplate();
-        basketCounterRef.innerHTML = basketItemsCount;
-        renderTotalPrice();
+        updateBasketInfo();
         return;
     }
 
+    let basketContent = "";
     basketContent += `<div class="basket-item-wrapper">`;
     for (let i = 0; i < basket.length; i++) {
         basketContent += getBasketTemplate(i);
-        basketItemsCount += basket[i].amount;
     }
     basketContent += `</div>`;
     basketContent += getBasketFooterTemplate();
     basketRef.innerHTML = basketContent;
-    basketCounterRef.innerHTML = basketItemsCount;
+    updateBasketInfo();
+}
+
+function updateBasketInfo() {
     renderTotalPrice();
+    renderBasketCounter();
+}
+
+function renderBasketCounter() {
+    const basketCounterRef = document.getElementById("shopping-cart-counter");
+    let basketItemsCount = 0;
+    if (basket.length === 0) {
+        basketCounterRef.innerHTML = basketItemsCount;
+        return;
+    }
+
+    for (let i = 0; i < basket.length; i++) {
+        basketItemsCount += basket[i].amount;
+    }
+    basketCounterRef.innerHTML = basketItemsCount;
 }
 
 function renderTotalPriceWithFee() {
