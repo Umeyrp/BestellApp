@@ -156,9 +156,22 @@ main {
     flex-direction: column;
     gap: 16px;
     padding: 10px;
+    overflow: hidden;
     background-color: #FDEADC;
     border-radius: 12px;
     color: #363534;
+}
+
+.dish-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dish-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .food-container article img {
@@ -169,36 +182,35 @@ main {
     object-position: center;
 }
 
-.food-container article h2 {
+.dish-info h2 {
     font-family: "Palanquin";
     font-size: 24px;
     font-weight: 600;
     line-height: 100%;
 }
 
-.food-container article>p {
+.dish-info p {
     font-family: "Palanquin";
     font-size: 16px;
     font-weight: 500;
     line-height: 120%;
 }
 
-.food-footer {
+.dish-footer {
     display: flex;
     justify-content: space-between;
     padding-top: 8px;
     padding-bottom: 8px;
 }
 
-
-.food-footer>p {
+.dish-footer p {
     font-family: "Palanquin";
     font-size: 24px;
     font-weight: 600;
     line-height: 120%;
 }
 
-.food-footer button {
+.dish-footer button {
     padding: 5px 8px;
     background-color: white;
     border: none;
@@ -210,16 +222,19 @@ main {
 }
 
 footer {
+    background-color: #E76C1F;
+    margin-top: 32px;
+}
+
+.footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin-top: 32px;
     padding: 22px 0px;
-    background-color: #E76C1F;
 }
 
-footer p {
+.footer p {
     font-family: "Palanquin";
     font-size: 18px;
     font-weight: 400;
@@ -227,11 +242,11 @@ footer p {
     color: white;
 }
 
-footer img {
+.footer img {
     height: 24px;
 }
 
-footer p:last-child {
+.footer p:last-child {
     display: flex;
     gap: 4px;
 }
@@ -299,14 +314,112 @@ nav img {
     height: 57px;
 }
 
-@media screen and (min-width: 768px) {
-    .confirmed-dialog {
-        width: 30%;
-    }
-}
-
 @media screen and (max-width: 375px) {
     nav {
         gap: 53px;
+    }
+
+    .confirmed-dialog h3 {
+        font-size: 20px;
+    }
+
+    .confirmed-dialog h2 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .confirmed-dialog {
+        width: 50%;
+    }
+
+    .hero-image-wrapper img:first-child {
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .hero-image-wrapper {
+        width: 100%;
+    }
+
+    .hero-section {
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .food-header {
+        display: flex;
+        gap: 20px;
+        padding-left: 12%;
+    }
+
+    .food-header img {
+        position: static;
+        transform: none;
+    }
+
+    .food-header h2 {
+        text-align: start;
+    }
+
+    .food-container {
+        padding: 0 120px;
+    }
+
+    .food-container article {
+        flex-direction: row;
+        gap: 56px;
+        width: 67%;
+        height: 141px;
+    }
+
+    .food-container article img {
+        width: 30%;
+        height: 100%;
+    }
+
+    .dish-info {
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .dish-header {
+        width: 56%;
+    }
+
+    .dish-footer {
+        flex-direction: column;
+        align-items: end;
+        padding: 0;
+    }
+
+    .confirmed-dialog {
+        width: 38%;
+        height: 16%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    footer {
+        margin-top: 96px;
+    }
+
+    .footer {
+        flex-direction: row-reverse;
+        justify-content: center;
+        gap: 72px;
+        padding: 32px;
+    }
+
+    .basket-aside {
+        display: block;
+    }
+
+    .basket-dialog {
+        display: none;
     }
 }

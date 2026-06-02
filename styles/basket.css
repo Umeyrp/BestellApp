@@ -33,6 +33,17 @@
     border-top-left-radius: 30px;
 }
 
+.basket-aside {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 87%;
+    overflow: visible;
+    background-color: #363534;
+    border: none;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
 
 .shopping-cart-wrapper {
     position: relative;
@@ -65,7 +76,7 @@
     color: #FDEADC;
 }
 
-.basked-content {
+.basket-content {
     display: flex;
     flex-direction: column;
     gap: 10px;

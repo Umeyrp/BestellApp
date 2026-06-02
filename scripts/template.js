@@ -1,11 +1,15 @@
 function getDishTemplate(dish) {
     return `    <article>
                     <img src="${dish.img}" alt="">
-                    <h2>${dish.name}</h2>
-                    <p>${dish.description}</p>
-                    <div class="food-footer">
-                        <p>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dish.price)}</p>
-                        <button onclick="addToBasket(${dish.id})">Add to basket</button>
+                    <div class="dish-info">
+                        <div class="dish-header">
+                            <h2>${dish.name}</h2>
+                            <p>${dish.description}</p>
+                        </div>
+                        <div class="dish-footer">
+                            <p>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dish.price)}</p>
+                            <button onclick="addToBasket(${dish.id})">Add to basket</button>
+                        </div>
                     </div>
                 </article>`;
 }

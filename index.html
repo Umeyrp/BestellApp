@@ -33,6 +33,12 @@
             <header class="food-header">
                 <img src="./assets/icons/pizza_icon.svg" alt="pizza icon">
                 <h2>Pizza</h2>
+                <aside class="basket-aside" hidden>
+                    <article class="dialog-content">
+                        <h2>Your Basket</h2>
+                        <div class="basket-content"></div>
+                    </article>
+                </aside>
             </header>
             <div class="food-container" id="pizza-section">
             </div>
@@ -55,9 +61,11 @@
         </section>
     </main>
     <footer>
-        <p>Imprint</p>
-        <p>Cookie Preferences</p>
-        <p><img src="./assets/icons/copyright_icon.svg" alt=""> 2025 BurgerHouse</p>
+        <div class="footer">
+            <p>Imprint</p>
+            <p>Cookie Preferences</p>
+            <p><img src="./assets/icons/copyright_icon.svg" alt=""> 2025 BurgerHouse</p>
+        </div>
     </footer>
     <nav>
         <button>
@@ -80,7 +88,7 @@
                 <img src="./assets/icons/close.svg" alt="close icon">
             </button>
             <h2>Your Basket</h2>
-            <div id="basked-content" class="basked-content"></div>
+            <div class="basket-content"></div>
         </article>
     </dialog>
     <dialog class="confirmed-dialog" id="confirmed-dialog" aria-modal="true">

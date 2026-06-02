@@ -75,11 +75,15 @@
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-/* header,
-main,
+header,
 footer {
+    /*Content Limit*/
     padding: 0rem max(calc(50% - 720px), 0rem);
-} */
+}
+
+main{
+        padding: 0rem max(calc(50% - 960px), 0rem);
+}
 
 * {
     box-sizing: border-box;

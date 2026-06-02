@@ -30,9 +30,12 @@ function renderDishes() {
 }
 
 function renderBasket() {
-    const basketRef = document.getElementById('basked-content');
+    const basketRefs = document.querySelectorAll('.basket-content');
+
     if (basket.length === 0) {
-        basketRef.innerHTML = getEmptyBasketTemplate();
+        basketRefs.forEach(element => {
+            element.innerHTML = getEmptyBasketTemplate();
+        });
         updateBasketInfo();
         return;
     }
@@ -44,7 +47,9 @@ function renderBasket() {
     }
     basketContent += `</div>`;
     basketContent += getBasketFooterTemplate();
-    basketRef.innerHTML = basketContent;
+    basketRefs.forEach(element => {
+        element.innerHTML = basketContent;
+    });
     updateBasketInfo();
 }
 
