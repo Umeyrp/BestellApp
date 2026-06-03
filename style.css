@@ -236,7 +236,6 @@ main {
 }
 
 footer {
-    margin-top: 32px;
     background-color: #E76C1F;
 }
 
@@ -328,6 +327,10 @@ nav img {
     height: 57px;
 }
 
+.main-content-right{
+    background-color: #363534;
+}
+
 @media screen and (max-width: 375px) {
     nav {
         gap: 53px;
@@ -365,7 +368,7 @@ nav img {
     .food-header {
         display: flex;
         gap: 20px;
-        width: 103%;
+        width: 100%;
         padding-left: 12%;
     }
 
@@ -412,10 +415,6 @@ nav img {
 
     nav {
         display: none;
-    }
-
-    footer {
-        margin-top: 96px;
     }
 
     .footer {

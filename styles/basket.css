@@ -98,6 +98,7 @@
     flex-direction: column;
     gap: 10px;
     height: 254px;
+    padding-right: 9px;
     overflow-y: auto;
 }
 
