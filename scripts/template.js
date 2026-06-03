@@ -15,14 +15,14 @@ function getDishTemplate(dish) {
 }
 
 function getBasketTemplate(basket_index) {
-    return `<div class="basket-item" id="basket-item-id-${basket_index}">
+    return `<div class="basket-item" id="basket-item-id-${basket[basket_index].id}">
                 <div>
                     <h3><span class="basket-item-counter-${basket[basket_index].id}">${basket[basket_index].amount}</span> x ${dishes[basket[basket_index].id].name}</h3>
-                    ${basket[basket_index].amount > 1 ? `<button class="basket-item-button" onclick="deleteFromBasket(${basket_index})"><img src="./assets/icons/delete.svg" alt="trash bin icon"></button>` : ``}
+                    ${basket[basket_index].amount > 1 ? `<button class="basket-item-button" onclick="deleteFromBasket(${basket[basket_index].id})"><img src="./assets/icons/delete.svg" alt="trash bin icon"></button>` : ``}
                 </div>
                 <div class="basket-item-footer">
                     <div class="basket-item-buttons-wrapper">
-                        ${basket[basket_index].amount > 1 ? `<button class="basket-item-button" onclick="decreaseFromBasket(${basket_index}, ${basket[basket_index].id})"><p>-</p></button>` : `<button class="basket-item-button" onclick="deleteFromBasket(${basket_index})"><img src="./assets/icons/delete.svg" alt="trash bin icon"></button>`}
+                        ${basket[basket_index].amount > 1 ? `<button class="basket-item-button" onclick="decreaseFromBasket(${basket[basket_index].id})"><p>-</p></button>` : `<button class="basket-item-button" onclick="deleteFromBasket(${basket[basket_index].id})"><img src="./assets/icons/delete.svg" alt="trash bin icon"></button>`}
                         <p class="basket-item-counter-${basket[basket_index].id}">${basket[basket_index].amount}</p>
                         <button class="basket-item-button" onclick="addToBasket(${basket[basket_index].id})"><p>+</p></button>
                     </div>
