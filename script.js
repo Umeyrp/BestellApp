@@ -111,7 +111,7 @@ function addToBasket(dish_id) {
     if (!dish) return; //Check if dish exists
     if (basketItem) {
         basketItem.amount++;
-        renderBasketItem(dish_id, basketItem.amount);
+        renderBasketItem(dish_id, basketItem.amount, null);
     } else {
         basket.push(
             {
@@ -124,12 +124,20 @@ function addToBasket(dish_id) {
     updateBasketInfo();
 }
 
-function renderBasketItem(dish_id, amount) {
-    let index = basket.indexOf(basket.find(dish => dish.id === dish_id));
-    const basketItemRefs = document.querySelectorAll(`#basket-item-id-${index}`);
-    basketItemRefs.forEach(element => {
-        element.outerHTML = getBasketTemplate(index);
-    });
+function renderBasketItem(dish_id, amount, basket_index) {
+    if (basket_index == null) {
+        basket_index = basket.findIndex(item => item.id == dish_id);
+    }
+    const basketItemRefs = document.querySelectorAll(`#basket-item-id-${basket_index}`);
+    if (amount != 0) {
+        basketItemRefs.forEach(element => {
+            element.outerHTML = getBasketTemplate(basket_index);
+        });
+    } else {
+        basketItemRefs.forEach(element => {
+            element.remove();
+        });
+    }
 }
 
 function renderBasketButtons() {
@@ -150,7 +158,7 @@ function decreaseFromBasket(basket_index, dish_id) {
     basket[basket_index].amount--;
     saveBasketInLocalStorage();
     updateBasketInfo();
-    renderBasketItem(dish_id, basket[basket_index].amount);
+    renderBasketItem(dish_id, basket[basket_index].amount, null);
 }
 
 function orderFood() {
@@ -167,10 +175,12 @@ function clearBasket() {
     renderBasket();
 }
 
-function deleteFromBasket(dish_id) {
-    basket.splice(dish_id, 1);
+function deleteFromBasket(basket_index) {
+    renderBasketItem(null, 0, basket_index);
+    basket.splice(basket_index, 1);
     saveBasketInLocalStorage();
-    renderBasket();
+    updateBasketInfo();
+    if (!basket.length) return renderEmptyBasket();
 }
 
 function saveBasketInLocalStorage() {
