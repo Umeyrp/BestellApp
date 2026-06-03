@@ -226,4 +226,9 @@
         flex: 1;
         height: 162px;
     }
+
+    .confirmed-dialog {
+        width: 57%;
+        height: 46%;
+    }
 }
