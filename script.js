@@ -1,5 +1,6 @@
 const basketDialogRef = document.getElementById('basket-dialog');
 const confirmedDialogRef = document.getElementById('confirmed-dialog');
+const basketRefs = document.querySelectorAll('.basket-content');
 
 
 function init() {
@@ -10,12 +11,10 @@ function init() {
 
 function getDishesTemplateByCategory(category) {
     let content = "";
-
     let categoryDishes = dishes.filter(item => item.category === category);
     for (let i = 0; i < categoryDishes.length; i++) {
         content += getDishTemplate(categoryDishes[i]);
     }
-
     return content;
 }
 
@@ -30,33 +29,46 @@ function renderDishes() {
 }
 
 function renderBasket() {
-    const basketRefs = document.querySelectorAll('.basket-content');
-
-    if (basket.length === 0) {
-        basketRefs.forEach(element => {
-            element.innerHTML = getEmptyBasketTemplate();
-        });
-        updateBasketInfo();
-        return;
-    }
-
+    if (!basket.length) return renderEmptyBasket();
     let basketContent = "";
     basketContent += `<div class="basket-item-wrapper">`;
     for (let i = 0; i < basket.length; i++) {
         basketContent += getBasketTemplate(i);
     }
     basketContent += `</div>`;
-    basketContent += getBasketFooterTemplate();
     basketRefs.forEach(element => {
         element.innerHTML = basketContent;
     });
     updateBasketInfo();
 }
 
+function renderBasketFooter() {
+    if (basket.length === 0) { return; }
+    const existingFooter = document.querySelectorAll('.basket-prices');
+    if (existingFooter.length) {
+        existingFooter.forEach(element => {
+            element.remove();
+        });
+    }
+    let basketContent = "";
+    basketContent += `<div class="basket-prices">`;
+    basketContent += getBasketFooterTemplate();
+    basketRefs.forEach(element => {
+        element.insertAdjacentHTML('beforeend', basketContent);
+    });
+}
+
+function renderEmptyBasket() {
+    basketRefs.forEach(element => {
+        element.innerHTML = getEmptyBasketTemplate();
+    });
+    updateBasketInfo();
+}
+
 function updateBasketInfo() {
-    renderTotalPrice();
     renderBasketCounter();
-    refreshBasketButtons();
+    renderBasketButtons();
+    renderBasketFooter();
 }
 
 function renderBasketCounter() {
@@ -76,6 +88,7 @@ function renderBasketCounter() {
 function renderTotalPriceWithFee() {
     renderTotalPrice(2);
 }
+
 function convertIntoEuroNumberFormat(number) {
     return number.toLocaleString('de-DE', { style: "currency", currency: "EUR" });
 }
@@ -98,43 +111,46 @@ function addToBasket(dish_id) {
     if (!dish) return; //Check if dish exists
     if (basketItem) {
         basketItem.amount++;
+        renderBasketItem(dish_id, basketItem.amount);
     } else {
         basket.push(
             {
                 "id": dish_id,
                 "amount": 1
             });
+        renderBasket();
     }
     saveBasketInLocalStorage();
-    renderBasket();
+    updateBasketInfo();
 }
 
-function refreshBasketButtons() {
-    const buttons = document.querySelectorAll(".add-to-basket");
+function renderBasketItem(dish_id, amount) {
+    let index = basket.indexOf(basket.find(dish => dish.id === dish_id));
+    const basketItemRefs = document.querySelectorAll(`#basket-item-id-${index}`);
+    basketItemRefs.forEach(element => {
+        element.outerHTML = getBasketTemplate(index);
+    });
+}
 
+function renderBasketButtons() {
+    const buttons = document.querySelectorAll(".add-to-basket");
     buttons.forEach(btn => {
         btn.textContent = "Add to basket";
         btn.classList.remove("added");
     });
-
     basket.forEach(item => {
         const button = document.getElementById(`added-${item.id}`);
-
         if (!button) return;
-
         button.textContent = `Added ${item.amount}`;
         button.classList.add("added");
     });
 }
 
-function decreaseFromBasket(basket_id) {
-    if (basket[basket_id].amount === 1) {
-        basket.splice(basket_id, 1);
-    } else {
-        basket[basket_id].amount--;
-    }
+function decreaseFromBasket(basket_index, dish_id) {
+    basket[basket_index].amount--;
     saveBasketInLocalStorage();
-    renderBasket();
+    updateBasketInfo();
+    renderBasketItem(dish_id, basket[basket_index].amount);
 }
 
 function orderFood() {
@@ -151,8 +167,8 @@ function clearBasket() {
     renderBasket();
 }
 
-function deleteFromBasket(basket_id) {
-    basket.splice(basket_id, 1);
+function deleteFromBasket(dish_id) {
+    basket.splice(dish_id, 1);
     saveBasketInLocalStorage();
     renderBasket();
 }
