@@ -2,7 +2,7 @@ let dishes = [
     {
         "id": 0,
         "name": "Pizza Magherita",
-        "description": "mit Tomatensauce",
+        "description": "with tomato sauce",
         "price": 11.99,
         "category": "pizza",
         "img": "./assets/img/pizza_img_1.jpg"
@@ -10,7 +10,7 @@ let dishes = [
     {
         "id": 1,
         "name": "Pizza Tonno",
-        "description": "mit Thunfisch",
+        "description": "with tuna",
         "price": 12.99,
         "category": "pizza",
         "img": "./assets/img/pizza_img_2.jpg"
@@ -18,7 +18,7 @@ let dishes = [
     {
         "id": 2,
         "name": "Pizza Diavolo",
-        "description": "mit Zwiebeln und Peperoni",
+        "description": "with onions and peppers",
         "price": 13.99,
         "category": "pizza",
         "img": "./assets/img/pizza_img_3.jpg"
@@ -26,7 +26,7 @@ let dishes = [
     {
         "id": 3,
         "name": "Veggie black Burger",
-        "description": "mit Mozarella, Gorgonzola und Tomaten",
+        "description": "with mozzarella, Gorgonzola, and tomatoes",
         "price": 8.99,
         "category": "burger",
         "img": "./assets/img/burger_img_2.jpg"
@@ -34,7 +34,7 @@ let dishes = [
     {
         "id": 4,
         "name": "All meat Burger",
-        "description": "mit Beef, Bacon und Sauergurken",
+        "description": "with beef, bacon, and pickles",
         "price": 9.99,
         "category": "burger",
         "img": "./assets/img/burger_img_1.jpg"
@@ -42,7 +42,7 @@ let dishes = [
     {
         "id": 5,
         "name": "Beef red Burger",
-        "description": "mit Beef, Käse und Tomaten",
+        "description": "with beef, cheese, and tomatoes",
         "price": 8.99,
         "category": "burger",
         "img": "./assets/img/burger_img_3.jpg"
@@ -50,7 +50,7 @@ let dishes = [
     {
         "id": 6,
         "name": "Salad with Sea food",
-        "description": "mit Tintenfisch, Schrimps und roten Zwiebeln",
+        "description": "with squid, shrimp, and red onions",
         "price": 5.99,
         "category": "salad",
         "img": "./assets/img/salad_img_2.jpg"
@@ -58,7 +58,7 @@ let dishes = [
     {
         "id": 7,
         "name": "Salad with Chicken",
-        "description": "mit Hähnchen und Oliven",
+        "description": "with chicken and olives",
         "price": 8.99,
         "category": "salad",
         "img": "./assets/img/salad_img_1.jpg"
@@ -66,7 +66,7 @@ let dishes = [
     {
         "id": 8,
         "name": "Mini Salad",
-        "description": "mit Gurken, Karotten und Radieschen",
+        "description": "with cucumbers, carrots, and radishes",
         "price": 9.99,
         "category": "salad",
         "img": "./assets/img/salad_img_3.jpg"

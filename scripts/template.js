@@ -7,8 +7,8 @@ function getDishTemplate(dish) {
                             <p>${dish.description}</p>
                         </div>
                         <div class="dish-footer">
-                            <p>${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dish.price)}</p>
-                            <button onclick="addToBasket(${dish.id})">Add to basket</button>
+                            <p>${convertIntoEuroNumberFormat(dish.price)}</p>
+                            <button onclick="addToBasket(${dish.id})" id="added-${dish.id}" class="add-to-basket">Add to basket</button>
                         </div>
                     </div>
                 </article>`;
@@ -26,28 +26,30 @@ function getBasketTemplate(basket_id) {
                         <p>${basket[basket_id].amount}</p>
                         <button class="basket-item-button" onclick="addToBasket(${basket[basket_id].id})"><p>+</p></button>
                     </div>
-                    <p class="basket-item-price">${new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(dishes[basket[basket_id].id].price)}</p>
+                    <p class="basket-item-price">${convertIntoEuroNumberFormat(dishes[basket[basket_id].id].price)}</p>
                 </div>
             </div>`;
 }
 
 function getBasketFooterTemplate() {
-    return `<div class="basket-price-wrapper">
-                <p>Subtotal</p>
-                <p>${renderTotalPrice()}</p>
-            </div>
-            <div class="basket-price-wrapper">
-                <p>Delivery fee</p>
-                <p>2 €</p>
-            </div>
-            <hr>
-            <div class="basket-price-wrapper">
-                <p>Total</p>
-                <p>${renderTotalPrice(2)}</p>
-            </div>
-            <button onclick="orderFood()" id="totalPrice" class="basket-buy-button">
-            Buy now (${renderTotalPrice(2)})
-            </button>`;
+    return `<div class="basket-prices">
+                <div class="basket-price-wrapper">
+                    <p>Subtotal</p>
+                    <p>${renderTotalPrice()}</p>
+                </div>
+                <div class="basket-price-wrapper">
+                    <p>Delivery fee</p>
+                    <p>2 €</p>
+                </div>
+                <hr>
+                <div class="basket-price-wrapper">
+                    <p>Total</p>
+                    <p>${renderTotalPrice(2)}</p>
+                </div>
+                <button onclick="orderFood()" id="totalPrice" class="basket-buy-button">
+                    Buy now (${renderTotalPrice(2)})
+                </button>
+            </div>`;
 }
 
 function getEmptyBasketTemplate() {

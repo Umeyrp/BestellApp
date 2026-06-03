@@ -56,6 +56,7 @@ function renderBasket() {
 function updateBasketInfo() {
     renderTotalPrice();
     renderBasketCounter();
+    refreshBasketButtons();
 }
 
 function renderBasketCounter() {
@@ -75,6 +76,9 @@ function renderBasketCounter() {
 function renderTotalPriceWithFee() {
     renderTotalPrice(2);
 }
+function convertIntoEuroNumberFormat(number) {
+    return number.toLocaleString('de-DE', { style: "currency", currency: "EUR" });
+}
 
 function renderTotalPrice(DeliveryFee = 0) {
     if (basket.length !== 0) {
@@ -83,7 +87,7 @@ function renderTotalPrice(DeliveryFee = 0) {
             price += basket[i].amount * dishes[basket[i].id].price;
         }
         price += DeliveryFee;
-        price = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(price);
+        price = convertIntoEuroNumberFormat(price);
         return price;
     }
 }
@@ -103,6 +107,24 @@ function addToBasket(dish_id) {
     }
     saveBasketInLocalStorage();
     renderBasket();
+}
+
+function refreshBasketButtons() {
+    const buttons = document.querySelectorAll(".add-to-basket");
+
+    buttons.forEach(btn => {
+        btn.textContent = "Add to basket";
+        btn.classList.remove("added");
+    });
+
+    basket.forEach(item => {
+        const button = document.getElementById(`added-${item.id}`);
+
+        if (!button) return;
+
+        button.textContent = `Added ${item.amount}`;
+        button.classList.add("added");
+    });
 }
 
 function decreaseFromBasket(basket_id) {
