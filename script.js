@@ -196,7 +196,6 @@ function getBasketFromLocalStorage() {
     if (basketLocal) basket = basketLocal;
 }
 
-
 function openBasketDialog() {
     basketDialogRef.showModal();
 }
